@@ -6,7 +6,7 @@ homepage = 'https://substrate.dev'
 license = 'Unlicense'
 name = 'pallet-template'
 repository = 'https://github.com/substrate-developer-hub/substrate-node-template/'
-version = '2.1.0-pre.1'
+version = '2.1.0-pre.2'
 
 [package.metadata.docs.rs]
 targets = ['x86_64-unknown-linux-gnu']
@@ -20,13 +20,13 @@ version = '1.3.4'
 
 [dependencies]
 serde = { features = ['derive'], optional = true, version = '1.0.101' }
-frame-support = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "a208da16" }
-frame-system = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "a208da16" }
+frame-support = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
+frame-system = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 
 [dev-dependencies]
-sp-core = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "a208da16" }
-sp-io = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "a208da16" }
-sp-runtime = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "a208da16" }
+sp-core = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
+sp-io = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
+sp-runtime = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 
 [features]
 default = ['std']
