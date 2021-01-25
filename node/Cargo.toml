@@ -36,9 +36,11 @@ sc-consensus = { git = "https://github.com/paritytech/substrate.git", rev = "38f
 sc-consensus-aura = { git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 sc-executor = { features = ['wasmtime'], git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 sc-finality-grandpa = { git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
+sc-keystore = { git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 sc-rpc = { git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 sc-rpc-api = { git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 sc-service = { features = ['wasmtime'], git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
+sc-telemetry = { git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 sc-transaction-pool = { git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 sp-api = { git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
 sp-block-builder = { git = "https://github.com/paritytech/substrate.git", rev = "38f723bf" }
