@@ -15,7 +15,7 @@ pipeline {
   stages {
     stage('Update') {
       steps {
-        sh './ci/install_wasm.sh'
+        sh 'rustup target add wasm32-unknown-unknown'
       }
     }
     stage('Build') {
