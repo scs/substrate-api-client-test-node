@@ -1,11 +1,11 @@
 [package]
-authors = ['Anonymous']
+authors = ['Substrate DevHub <https://github.com/substrate-developer-hub>']
 edition = '2018'
 name = 'pallet-template'
-version = "2.0.0"
+version = "3.0.0"
 license = "Unlicense"
 homepage = "https://substrate.dev"
-repository = "https://github.com/paritytech/substrate/"
+repository = "https://github.com/substrate-developer-hub/substrate-node-template/"
 description = "FRAME pallet template for defining custom runtime logic."
 readme = "README.md"
 
@@ -14,42 +14,24 @@ targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
 codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false, features = ["derive"] }
-serde = { features = ['derive'], optional = true, version = '1.0.101' }
-
-[dependencies.frame-support]
-default-features = false
-version = "3.0.0"
-git = "https://github.com/paritytech/substrate.git"
-
-[dependencies.frame-system]
-default-features = false
-version = "3.0.0"
-git = "https://github.com/paritytech/substrate.git"
+frame-support = { default-features = false, version = "3.0.0", git = "https://github.com/paritytech/substrate.git" }
+frame-system = { default-features = false,  version = "3.0.0", git = "https://github.com/paritytech/substrate.git" }
+frame-benchmarking = { default-features = false,  version = "3.1.0", git = "https://github.com/paritytech/substrate.git", optional = true }
 
 [dev-dependencies]
-serde = { version = "1.0.101" }
-
-[dev-dependencies.sp-core]
-default-features = false
-version = "3.0.0"
-git = "https://github.com/paritytech/substrate.git"
-
-[dev-dependencies.sp-io]
-default-features = false
-version = "3.0.0"
-git = "https://github.com/paritytech/substrate.git"
-
-[dev-dependencies.sp-runtime]
-default-features = false
-version = "3.0.0"
-git = "https://github.com/paritytech/substrate.git"
-
+serde = { version = "1.0.119" }
+sp-core = { default-features = false, version = "3.0.0", git = "https://github.com/paritytech/substrate.git" }
+sp-io = { default-features = false, version = "3.0.0", git = "https://github.com/paritytech/substrate.git" }
+sp-runtime = { default-features = false, version = "3.0.0", git = "https://github.com/paritytech/substrate.git" }
 
 [features]
 default = ['std']
 std = [
-	'serde',
 	'codec/std',
 	'frame-support/std',
-	'frame-system/std'
+	'frame-system/std',
+	'frame-benchmarking/std',
 ]
+
+runtime-benchmarks = ["frame-benchmarking"]
+try-runtime = ["frame-support/try-runtime"]
