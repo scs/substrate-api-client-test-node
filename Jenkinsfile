@@ -13,9 +13,9 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '3'))
   }
   stages {
-    stage('Update') {
+    stage('rustup') {
       steps {
-        sh 'rustup target add wasm32-unknown-unknown'
+        sh './ci/install_rust.sh'
       }
     }
     stage('Build') {
