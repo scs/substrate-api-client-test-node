@@ -2,7 +2,7 @@
 authors = ['Substrate DevHub <https://github.com/substrate-developer-hub>']
 edition = '2018'
 name = 'pallet-template'
-version = "4.0.0-dev"
+version = "3.0.0"
 license = "Unlicense"
 homepage = "https://substrate.dev"
 repository = "https://github.com/substrate-developer-hub/substrate-node-template/"
@@ -16,10 +16,10 @@ targets = ["x86_64-unknown-linux-gnu"]
 codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false, features = ["derive"] }
 frame-support = { default-features = false, version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "master" }
 frame-system = { default-features = false,  version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "master" }
-frame-benchmarking = { default-features = false,  version = "3.1.0", optional = true,git = "https://github.com/paritytech/substrate.git", branch = "master" }
+frame-benchmarking = { default-features = false,  version = "4.0.0-dev", optional = true,git = "https://github.com/paritytech/substrate.git", branch = "master" }
 
 [dev-dependencies]
-serde = { version = "1.0.119" }
+serde = { version = "1.0.126" }
 sp-core = { default-features = false, version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "master" }
 sp-io = { default-features = false, version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "master" }
 sp-runtime = { default-features = false, version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "master" }
