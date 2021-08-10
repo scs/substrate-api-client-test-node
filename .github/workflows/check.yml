@@ -4,7 +4,7 @@ name: Check Set-Up & Build
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ master , polkadot-v0.9.2]
   pull_request:
     branches: [ master , polkadot-v0.9.2]
 
