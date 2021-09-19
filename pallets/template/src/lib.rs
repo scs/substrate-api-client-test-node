@@ -18,12 +18,26 @@ mod benchmarking;
 pub mod pallet {
 	use frame_support::{dispatch::DispatchResult, pallet_prelude::*};
 	use frame_system::pallet_prelude::*;
+	use frame_support::sp_runtime::traits::{AtLeast32Bit, MaybeDisplay};
+	use frame_support::sp_std::fmt::Debug;
+	use frame_support::dispatch::EncodeLike;
 
 	/// Configure the pallet by specifying the parameters and types on which it depends.
 	#[pallet::config]
 	pub trait Config: frame_system::Config {
 		/// Because this pallet emits events, it depends on the runtime's definition of an event.
 		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
+		/// Account index (aka nonce) type. This stores the number of previous transactions
+		/// associated with a sender account.
+		type Index: Parameter
+		+ Member
+		+ MaybeSerializeDeserialize
+		+ Debug
+		+ Default
+		+ MaybeDisplay
+		+ AtLeast32Bit
+		+ EncodeLike<u32>
+		+ Copy;
 	}
 
 	#[pallet::pallet]
@@ -37,6 +51,39 @@ pub mod pallet {
 	// Learn more about declaring storage items:
 	// https://substrate.dev/docs/en/knowledgebase/runtime/storage#declaring-storage-items
 	pub type Something<T> = StorageValue<_, u32>;
+
+
+	#[pallet::storage]
+	#[pallet::getter(fn some_double_map)]
+	pub type SomeDoubleMap<T> = StorageDoubleMap<_,
+		Blake2_128Concat, <T as Config>::Index,
+		Blake2_128Concat, <T as Config>::Index,
+		<T as Config>::Index>;
+
+	#[pallet::genesis_config]
+	pub struct GenesisConfig<T: Config> {
+		pub some_double_map: Vec<(
+			<T as Config>::Index,
+			<T as Config>::Index,
+			<T as Config>::Index,
+		)>,
+	}
+
+	#[cfg(feature = "std")]
+	impl<T: Config> Default for GenesisConfig<T> {
+		fn default() -> Self {
+			Self { some_double_map: Default::default() }
+		}
+	}
+
+	#[pallet::genesis_build]
+	impl<T: Config> GenesisBuild<T> for GenesisConfig<T> {
+		fn build(&self) {
+			for (primary, secondary, value) in self.some_double_map.iter() {
+				<SomeDoubleMap<T>>::insert(primary, secondary, value);
+			}
+		}
+	}
 
 	// Pallets use events to inform users when important changes are made.
 	// https://substrate.dev/docs/en/knowledgebase/runtime/events
