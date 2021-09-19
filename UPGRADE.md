@@ -16,6 +16,3 @@ cargo update -p sp-std --precise 743accbe3256de2fc615adcaa3ab03ebdbbb4dbd
 
 ```
 
-make sure to preserve our changes in
-* node/src chain_spec.rs
-* pallets/template/src/lib.rs
