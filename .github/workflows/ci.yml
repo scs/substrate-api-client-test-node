@@ -1,0 +1,36 @@
+name: Check Set-Up & Build
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  cancel_previous_runs:
+    name: Cancel Previous Runs
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: styfle/cancel-workflow-action@0.4.1
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: init-rust-target
+        run: rustup show
+
+      - uses: Swatinem/rust-cache@v1
+
+      - name: build release
+        run: cargo build --release
+
+      - name: Upload node-template
+        uses: actions/upload-artifact@v2
+        with:
+          name: node-template-${{ github.sha }}
+          path: target/release/node-template
